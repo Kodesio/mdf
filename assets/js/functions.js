@@ -1,5 +1,5 @@
 /**
-* Mizzle - Technology and Corporate Bootstrap Theme
+* MDF - Le meilleur partenaire juridique et fiscal.
 *
 * @author Webestica (https://www.webestica.com/)
 * @version 1.1.0

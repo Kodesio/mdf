@@ -1,5 +1,5 @@
 /**
-* Mizzle | Technology and Corporate Bootstrap Template
+* MDF | Technology and Corporate Bootstrap Template
 *
 * @author Webestica (https://www.webestica.com/)
 * 
