@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>La Maison de la Fiscalité</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Technology and Corporate Bootstrap Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="header-sticky header-absolute bg-light" data-bs-theme="">
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-lg px-lg-5">
+        <div class="container">
+            <!-- Logo START -->
+            <a class="navbar-brand py-3 me-5" href="index.html">
+                <img class="light-mode-item navbar-brand-item" src="assets/images/logo.png" alt="logo">
+                <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+            </a>
+            <!-- Logo END -->
+
+            <!-- Main navbar START -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                 aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <a class="me-5" href="index.html">
+                        <img class="light-mode-item navbar-brand-item" src="assets/images/logo.png" width="100" alt="logo">
+                        <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+                    </a>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+                        <!-- Nav item -->
+                        <li class="nav-item"><a class="nav-link" href="index-digital-agency.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-v1.html">Le Cabinet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="services-v1.html">Nos Services</a></li>
+                        <li class="nav-item dropdown dropdown-fullwidth">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">Documentation</a>
+                            <div class="dropdown-menu py-0">
+                                <div class="row p-2 p-sm-4">
+                                    <!-- Dropdown column item -->
+                                    <div class="col-md-6 col-xl-4 col-xxl-3">
+                                        <div class="d-md-flex gap-4 h-100">
+                                            <!-- Links -->
+                                            <ul class="list-unstyled w-100">
+                                                <li class="dropdown-header h6 mb-2">Liens utiles</li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-file-text fa-fw me-2"></i>Lois de finances</a></li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-chat-left fa-fw me-2"></i>Code général des
+                                                    impots</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-calendar3-week fa-fw me-2"></i>Codes sectoriels</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-blockquote-right fa-fw me-2"></i>Conventions
+                                                    fiscales</a></li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-lock fa-fw me-2"></i>Doctrines
+                                                    fiscales</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-star fa-fw me-2"></i>Formations</a>
+                                                </li>
+                                            </ul>
+                                            <!-- Divider line -->
+                                            <div class="vr ms-2 ms-auto d-none d-md-block"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dropdown column item -->
+                                    <div class="col-md-6 col-xl-4 col-xxl-5 h-100">
+                                        <span class="dropdown-header h6 mb-2">Rubriques</span>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi-file-earmark-text heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Documentation
+                                                        fiscales</p>
+                                                    <p class="mb-0 text-body small">Using documentation you can easily
+                                                        develop projects</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="help-center.html" target="_blank"><i
+                                                    class="bi bi-chevron-right"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-stickies heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Documentation
+                                                        juridique</p>
+                                                    <p class="mb-0 text-body small">Development guides for building
+                                                        projects
+                                                        with Mizzle</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="#"><i
+                                                    class="bi bi-chevron-right"></i> </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-bullseye heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Lois de finance
+                                                        2024</p>
+                                                    <p class="mb-0 text-body small">Recent feature release and
+                                                        announcement.
+                                                        See how changes are made.</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="docs/changelog.html" target="_blank"><i
+                                                    class="bi bi-box-arrow-up-right"></i> </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-mask heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <a class="stretched-link heading-color fw-bold mb-0" href="#">Code
+                                                        général des impôts 2024</a>
+                                                    <p class="mb-0 text-body small">Tips and In-depth guide for headless
+                                                        browser automation</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="#"><i
+                                                    class="bi bi-chevron-right"></i> </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feature resources card -->
+                                    <div class="col-lg-4">
+                                        <span class="dropdown-header h6 mb-2">Derniers article</span>
+
+                                        <!-- Feature card -->
+                                        <div class="card bg-transparent px-3">
+                                            <!-- Image -->
+                                            <img src="assets/images/blog/02.jpg" class="rounded mb-3" alt="feature-img">
+                                            <div class="card-body p-0">
+                                                <h6><a href="#">Comment choisir son cabinet de gestion de fiscalité</a>
+                                                </h6>
+                                                <p class="mb-2">Departure defective arranging rapturous did believe him
+                                                    all
+                                                    had supported.</p>
+                                                <a class="text-primary icon-link icon-link-hover stretched-link z-index-2"
+                                                   href="#">Lire cet article<i class="bi bi-arrow-right"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="blog-grid.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#contactCanvas">Nous contacter</a></li>
+
+                    </ul>
+                </div>
+                <!-- Main navbar END -->
+            </div>
+
+            <!-- Buttons -->
+            <ul class="nav align-items-center dropdown-hover ms-sm-2">
+
+                <!-- Search -->
+                <li class="nav nav-item dropdown nav-search px-1 px-lg-3">
+                    <a class="btn btn-light border btn-round mb-0" role="button" href="#" id="navSearch"
+                       data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside"
+                       data-bs-display="static">
+                        <i class="bi bi-search"> </i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch"
+                         data-bs-popper="none">
+                        <form class="input-group">
+                            <input class="form-control border-primary" type="search" placeholder="Search..."
+                                   aria-label="Search">
+                            <button class="btn btn-primary m-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+
+                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                    <img src="assets/images/flags/bj.png" width="32" alt="Benin flag">
+                </li>
+                <!--
+                                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                                    <a class="btn btn-light mb-0">Loi de finances 2024</a>
+                                </li>
+                -->
+
+                <!--
+                                &lt;!&ndash; Offcanvas cart menu &ndash;&gt;
+                                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                                    <a class="btn btn-dark mb-0">Nous contacter</a>
+                                </li>
+                -->
+
+                <!-- Responsive navbar toggler -->
+                <li class="nav-item">
+                    <button class="navbar-toggler ms-3 p-2" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="navbarCollapse" aria-expanded="false"
+                            aria-label="Toggle navigation">
+						<span class="navbar-toggler-animation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+                    </button>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main Banner START -->
+<section class="position-relative pt-md-8 pb-0">
+	<div class="container position-relative z-index-1 pt-4 pt-md-0">
+		<div class="row g-4 g-xxl-5">
+			<div class="col-lg-8 col-xl-6">
+				<!-- Bread crumb -->
+				<div class="d-flex position-relative mb-3">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb breadcrumb-dots pb-0 mb-0">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Documents</li>
+						</ol>
+					</nav>
+				</div>
+
+				<!-- Title -->
+				<h1 class="mb-4 h2">Retrouvez tous les documents fiscaux en vigueur au Bénin sur notre plateforme</h1>
+
+				<!-- Search -->
+				<form class="bg-light border rounded-2 position-relative p-2">
+					<div class="input-group">
+						<input class="form-control focus-shadow-none bg-light border-0 me-1" type="email" placeholder="Rechercher un document...">
+						<button type="button" class="btn btn-dark rounded-2 mb-0"><i class="bi bi-search"></i></button>
+					</div>
+				</form>
+
+				<!-- Recent search list -->
+				<ul class="list-inline small mb-0 mt-3">
+					<li class="list-inline-item"> <span class="text-secondary">Popular search: </span></li>
+					<li class="list-inline-item"> <a class="text-primary-hover heading-color text-decoration-underline mb-lg-0" href="#"> How can we help?</a> </li>
+					<li class="list-inline-item"> <a class="text-primary-hover heading-color text-decoration-underline mb-lg-0" href="#"> Installation Guide? </a> </li>
+					<li class="list-inline-item"> <a class="text-primary-hover heading-color text-decoration-underline mb-lg-0" href="#"> How to view expired tickets? </a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Main Banner END -->
+
+<!-- =======================
+Help topic START -->
+<section>
+	<div class="container">
+		<div class="row g-4 g-xl-6">
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-boxes fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Lois de finances</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Gulp and Customization</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Color Scheme and Logo Settings</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Dark mode, RTL Version, and Lazy Load</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Updates and Support</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-emoji-smile fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Code général des impôts</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Connecting to your Account</a></li>
+						<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Edit your profile information</a></li>
+						<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Adding your profile picture</a></li>
+						<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Describing your store</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-layers fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Conventions fiscales</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Security & Privacy</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Author, Publisher & Admin Guides</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Pricing plans</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Sales Tax & Regulatory Fees</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-house fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Doctrine fiscale</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Admin & Billing</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Become a Pro</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Mobile application</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Guide</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-cash-coin fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Codes sectoriels</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>How can I get a refund?</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>How do I get a receipt</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Pricing plans</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Sales Tax & Regulatory Fees</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+
+			<!-- Topic item START -->
+			<div class="col-md-6 col-lg-4">
+				<div class="card border p-4 h-100">
+					<div class="card-body p-0">
+						<!-- Icon -->
+						<div class="icon-md bg-primary text-white rounded flex-shrink-0 mb-3"><i class="bi bi-app-indicator fs-6"></i></div>
+						<!-- Title -->
+						<h6 class="card-title mb-3">Decrets</h6>
+						<!-- Links -->
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Overview of integration capabilities</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>Setting up integrations</a></li>
+							<li class="nav-item"><a class="nav-link d-flex" href="help-center-detail.html"><i class="fa-solid fa-angle-right pt-1 me-2"></i>How much software support?</a></li>
+						</ul>
+					</div>
+
+					<!-- Button -->
+					<div class="card-footer p-0 pt-3">
+						<a class="icon-link icon-link-hover" href="#">View all articles<i class="bi bi-arrow-right"></i> </a>
+					</div>
+				</div>
+			</div>
+			<!-- Topic item END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+Help topic END -->
+
+<!-- =======================
+Faqs START -->
+<section class="pt-0">
+	<div class="container inner-container">
+		<!-- Title -->
+		<h3 class="text-center">Frequently Asked Questions</h3>
+
+		<!-- Accordion START -->
+		<div class="accordion accordion-icon accordion-border-bottom mt-5" id="accordionExample2">
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-1">
+					<button class="accordion-button fw-bold d-inline-block collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+						How can we help?
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						Yet remarkably appearance gets him his projection. Diverted endeavor bed peculiar men the not desirous. Acuteness abilities ask can offending furnished fulfilled sex. Warrant fifteen exposed ye at mistake. Blush since so in noisy still built up an again. As young ye hopes no he place means. Partiality diminution gay yet entreaties admiration. In mention perhaps attempt pointed suppose. Unknown ye chamber of warrant of Norland arrived.
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-2">
+					<button class="accordion-button fw-bold d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+						How to edit my Profile?
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						What deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be.
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-3">
+					<button class="accordion-button fw-bold collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+						How much should I offer the sellers? 
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						Post no so what deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-4">
+					<button class="accordion-button fw-bold collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+						Installation Guide 
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						<p>What deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be.</p>
+						<p class="mb-0">At the moment, we only accept Credit/Debit cards and Paypal payments. Paypal is the easiest way to make payments online. While checking out your order. Be sure to fill in correct details for fast &amp; hassle-free payment processing.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-5">
+					<button class="accordion-button fw-bold collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+						Additional Options and Services
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						Post no so what deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="accordion-item mb-3">
+				<div class="accordion-header font-base" id="heading-6">
+					<button class="accordion-button fw-bold collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+						What is the difference between a college and a university?
+					</button>
+				</div>
+				<!-- Body -->
+				<div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordionExample2">
+					<div class="accordion-body">
+						Post no so what deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Accordion END -->
+	</div>
+</section>
+<!-- =======================
+Faqs END -->
+
+<!-- =======================
+Support links START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 g-lg-6">
+			<!-- Address info -->
+			<div class="col">
+				<div class="card card-body card-hover-shadow border p-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="d-flex">
+							<!-- Icon -->
+							<h4 class="mb-0 text-primary"><i class="bi bi-headset"></i></h4>
+							<!-- Content -->
+							<div class="mx-3">
+								<h6 class="mb-0">Contact Support</h6>
+								<small>Not finding the help you need?</small>
+							</div>
+						</div>
+						<!-- Button -->
+						<a class="icon-link icon-link-hover text-body stretched-link" href="#"><i class="bi bi-arrow-right fs-5"></i> </a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Email info -->
+			<div class="col">
+				<div class="card card-body card-hover-shadow border p-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="d-flex">
+							<!-- Icon -->
+							<h4 class="mb-0 text-primary"><i class="bi bi-ticket-perforated"></i></h4>
+							<!-- Content -->
+							<div class="mx-3">
+								<h6 class="mb-0">Submit a Ticket</h6>
+								<small>Prosperous impression had delay</small>
+							</div>
+						</div>
+						<!-- Button -->
+						<a class="icon-link icon-link-hover text-body stretched-link" href="#"><i class="bi bi-arrow-right fs-5"></i> </a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Contact info -->
+			<div class="col">
+				<div class="card card-body card-hover-shadow border p-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="d-flex">
+							<!-- Icon -->
+							<h4 class="mb-0 text-primary"><i class="bi bi-envelope-open"></i></h4>
+							<!-- Content -->
+							<div class="mx-3">
+								<h6 class="mb-0">Email us</h6>
+								<small>Reach us at <a href="#" class="heading-color">example@gmail.com</a></small>
+							</div>
+						</div>
+						<!-- Button -->
+						<a class="icon-link icon-link-hover text-body stretched-link" href="#"><i class="bi bi-arrow-right fs-5"></i> </a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- =======================
+Support links END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-light position-relative overflow-hidden" data-bs-theme="light">
+
+    <div class="container position-relative mt-5">
+        <!-- Widgets -->
+
+        <!-- Contact detail -->
+        <div class="row g-4 align-items-center">
+            <!-- Title -->
+            <div class="col-xl-3 text-lg-center text-xl-start mb-4 mb-xl-0">
+                <img src="assets/images/logo.png" width="200" class="mb-4" alt="">
+                <h5 class="mb-1">Contactez nous dès aujourd'hui</h5>
+                <p class="mb-0">Nous vous garantissons une expérience rapide</p>
+            </div>
+
+            <!-- Mobile number -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-telephone heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Appelez-nous</div>
+                        <p class="fw-semibold mt-1 mb-0"><a href="#"
+                                                            class="heading-color text-primary-hover stretched-link p-0">+229 50 72 88 61</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-envelope heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Envoyez nous un email</div>
+                        <p class="fw-semibold mt-1 mb-0"><a href="#"
+                                                            class="heading-color text-primary-hover stretched-link p-0">secretariat@mfisca.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-geo-alt heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Rendez nous visite</div>
+                        <p class="fw-semibold heading-color mt-1 mb-0">Quartier Dedokpo, Cotonou Bénin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="opacity-1 mt-6 mb-0">
+
+        <!-- Bottom footer -->
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+            <!-- copyright text -->
+            <div class="text-body mb-3 mb-md-0"> Copyrights ©2024 LA MAISON DE LA FISCALITE. Par <a href="https://www.kodesio.com/"
+                                                                                      class="text-primary">Kodesio Digital Partners</a>.
+            </div>
+
+            <!-- Social links -->
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-facebook-f lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-instagram lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-twitter lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-linkedin-in lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-youtube lh-base"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Theme Functions -->
+<script src="assets/js/functions.js"></script>
+
+<div class="offcanvas offcanvas-end col-12" tabindex="-1" id="contactCanvas" aria-labelledby="offcanvasExampleLabel" style="width: 490px;" bis_skin_checked="1" aria-modal="true" role="dialog">
+    <div class="offcanvas-header" bis_skin_checked="1">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        <div class="row d-flex align-items-center" bis_skin_checked="1">
+          <!--<img alt="BFT logo" height="45px" src="/static/images/logo-BFT.png">
+                <div class="row d-flex">
+                  <div class="col-9">
+                    <p >+22960006060</p>
+
+                  </div>
+
+                </div>-->
+          <div class="d-flex align-items-center">
+            <div>
+              <i class="fa fa-phone text-primary fs-6"></i>
+            </div>
+            <div class="ms-2">
+              <div class="fs-6 text-dark fw-normal">+22950728861</div>
+            </div>
+          </div>
+
+
+        </div>
+      </h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body" bis_skin_checked="1">
+
+      <div class="h4 d-flex justify-content-start mb-3" bis_skin_checked="1" style="color: #2e3946;">Laissez nous un message !</div>
+      <div class="p d-flex justify-content-start mb-3 text-center pb-5" bis_skin_checked="1">Nous repondons le plus rapidement possible à votre message!</div>
+      <div class="col-md-12" bis_skin_checked="1">
+        <!--<a href="mailto:contact@kodesio.com" class="k-btn-primary d-flex justify-content-center align-items-center w-100" bis_skin_checked="1"><i class="bi bi-envelope" style="margin-right: 10px !important"></i>
+            <span> contact@bftgroup.co</span></a>-->
+      </div>
+
+
+      <form hx-post="/blog/send_contact_form/" method="post" class="row gy-4">
+
+        <input type="hidden" name="csrfmiddlewaretoken" value="gdVFSe4fqfxNsEByzwpUCyxZuXBT5oJDl5hyPD6g4P2PjQ0nFKnLP0zphkdDhQIq">
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="name">Nom de l'entreprise</label>
+          <input type="text" name="companyname" id="companyname" class="form-control" required="">
+        </div>
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" class="form-control" required="">
+        </div>
+
+
+        <div class="col-md-6 " bis_skin_checked="1">
+          <label for="email">Courriel</label>
+          <input type="email" class="form-control" name="email" id="email" required="">
+        </div>
+
+        <div class="col-md-6 " bis_skin_checked="1">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" class="form-control" name="phone" id="phone" required="">
+        </div>
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="message">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="6" required=""></textarea>
+        </div>
+
+        <div class="col-md-12 d-flex text-center " bis_skin_checked="1">
+          <button type="submit" class="htmx-indicator btn btn-dark justify-content-center align-items-center w-100" style="background-color: #2e3946; color: #fff;">Envoyer</button>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>

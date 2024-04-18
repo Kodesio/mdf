@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>La Maison de la Fiscalité</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Technology and Corporate Bootstrap Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+	
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="header-sticky header-absolute bg-light" data-bs-theme="">
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-lg px-lg-5">
+        <div class="container">
+            <!-- Logo START -->
+            <a class="navbar-brand py-3 me-5" href="index.html">
+                <img class="light-mode-item navbar-brand-item" src="assets/images/logo.png" alt="logo">
+                <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+            </a>
+            <!-- Logo END -->
+
+            <!-- Main navbar START -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                 aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <a class="me-5" href="index.html">
+                        <img class="light-mode-item navbar-brand-item" src="assets/images/logo.png" width="100" alt="logo">
+                        <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+                    </a>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+                        <!-- Nav item -->
+                        <li class="nav-item"><a class="nav-link" href="index-digital-agency.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-v1.html">Le Cabinet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="services-v1.html">Nos Services</a></li>
+                        <li class="nav-item dropdown dropdown-fullwidth">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">Documentation</a>
+                            <div class="dropdown-menu py-0">
+                                <div class="row p-2 p-sm-4">
+                                    <!-- Dropdown column item -->
+                                    <div class="col-md-6 col-xl-4 col-xxl-3">
+                                        <div class="d-md-flex gap-4 h-100">
+                                            <!-- Links -->
+                                            <ul class="list-unstyled w-100">
+                                                <li class="dropdown-header h6 mb-2">Liens utiles</li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-file-text fa-fw me-2"></i>Lois de finances</a></li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-chat-left fa-fw me-2"></i>Code général des
+                                                    impots</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-calendar3-week fa-fw me-2"></i>Codes sectoriels</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-blockquote-right fa-fw me-2"></i>Conventions
+                                                    fiscales</a></li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-lock fa-fw me-2"></i>Doctrines
+                                                    fiscales</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-star fa-fw me-2"></i>Formations</a>
+                                                </li>
+                                            </ul>
+                                            <!-- Divider line -->
+                                            <div class="vr ms-2 ms-auto d-none d-md-block"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dropdown column item -->
+                                    <div class="col-md-6 col-xl-4 col-xxl-5 h-100">
+                                        <span class="dropdown-header h6 mb-2">Rubriques</span>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi-file-earmark-text heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Documentation
+                                                        fiscales</p>
+                                                    <p class="mb-0 text-body small">Using documentation you can easily
+                                                        develop projects</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="help-center.html" target="_blank"><i
+                                                    class="bi bi-chevron-right"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-stickies heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Documentation
+                                                        juridique</p>
+                                                    <p class="mb-0 text-body small">Development guides for building
+                                                        projects
+                                                        with Mizzle</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="#"><i
+                                                    class="bi bi-chevron-right"></i> </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-bullseye heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <p class="stretched-link heading-color fw-bold mb-0">Lois de finance
+                                                        2024</p>
+                                                    <p class="mb-0 text-body small">Recent feature release and
+                                                        announcement.
+                                                        See how changes are made.</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="docs/changelog.html" target="_blank"><i
+                                                    class="bi bi-box-arrow-up-right"></i> </a>
+                                        </div>
+
+                                        <!-- Dropdown item -->
+                                        <div class="dropdown-item bg-light-hover d-flex align-items-center justify-content-between position-relative text-wrap py-3">
+                                            <div class="d-flex me-3">
+                                                <!-- Icon -->
+                                                <div class="icon-md border bg-body rounded flex-shrink-0"><i
+                                                        class="bi bi-mask heading-color fs-6"></i></div>
+                                                <!-- Content -->
+                                                <div class="mx-2">
+                                                    <a class="stretched-link heading-color fw-bold mb-0" href="#">Code
+                                                        général des impôts 2024</a>
+                                                    <p class="mb-0 text-body small">Tips and In-depth guide for headless
+                                                        browser automation</p>
+                                                </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <a class="icon-link icon-link-hover text-primary-hover stretched-link"
+                                               href="#"><i
+                                                    class="bi bi-chevron-right"></i> </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feature resources card -->
+                                    <div class="col-lg-4">
+                                        <span class="dropdown-header h6 mb-2">Derniers article</span>
+
+                                        <!-- Feature card -->
+                                        <div class="card bg-transparent px-3">
+                                            <!-- Image -->
+                                            <img src="assets/images/blog/02.jpg" class="rounded mb-3" alt="feature-img">
+                                            <div class="card-body p-0">
+                                                <h6><a href="#">Comment choisir son cabinet de gestion de fiscalité</a>
+                                                </h6>
+                                                <p class="mb-2">Departure defective arranging rapturous did believe him
+                                                    all
+                                                    had supported.</p>
+                                                <a class="text-primary icon-link icon-link-hover stretched-link z-index-2"
+                                                   href="#">Lire cet article<i class="bi bi-arrow-right"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="blog-grid.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#contactCanvas">Nous contacter</a></li>
+
+                    </ul>
+                </div>
+                <!-- Main navbar END -->
+            </div>
+
+            <!-- Buttons -->
+            <ul class="nav align-items-center dropdown-hover ms-sm-2">
+
+                <!-- Search -->
+                <li class="nav nav-item dropdown nav-search px-1 px-lg-3">
+                    <a class="btn btn-light border btn-round mb-0" role="button" href="#" id="navSearch"
+                       data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside"
+                       data-bs-display="static">
+                        <i class="bi bi-search"> </i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch"
+                         data-bs-popper="none">
+                        <form class="input-group">
+                            <input class="form-control border-primary" type="search" placeholder="Search..."
+                                   aria-label="Search">
+                            <button class="btn btn-primary m-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+
+                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                    <img src="assets/images/flags/bj.png" width="32" alt="Benin flag">
+                </li>
+                <!--
+                                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                                    <a class="btn btn-light mb-0">Loi de finances 2024</a>
+                                </li>
+                -->
+
+                <!--
+                                &lt;!&ndash; Offcanvas cart menu &ndash;&gt;
+                                <li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+                                    <a class="btn btn-dark mb-0">Nous contacter</a>
+                                </li>
+                -->
+
+                <!-- Responsive navbar toggler -->
+                <li class="nav-item">
+                    <button class="navbar-toggler ms-3 p-2" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="navbarCollapse" aria-expanded="false"
+                            aria-label="Toggle navigation">
+						<span class="navbar-toggler-animation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+                    </button>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main hero START -->
+<section class="bg-dark pt-lg-8 pt-xl-9" style="background-image:url(assets/images/elements/bg-pattern-2.png); background-position: center left; background-size: cover;" data-bs-theme="dark">
+	<div class="container position-relative pt-4 pt-lg-0">
+		<div class="row align-items-center">
+			<!-- Title -->
+			<div class="col-md-7 col-xl-6">
+				<h1 class="mb-4">Audit fiscal des comptes & déclarations</h1>
+				<p class="mb-4">Digital marketing is the strategic use of online channels and technologies to promote products, services, or brands to a target audience.</p>
+			</div>
+			
+			<div class="col-md-4 ms-auto text-md-end">
+				<a href="#pricing" class="btn btn-lg btn-primary mb-6 mb-md-0">Lire plus</a>
+			</div>
+		</div>
+	</div>	
+</section>
+<!-- =======================
+Main hero END -->
+
+<!-- =======================
+Image video START -->
+<section class="pt-0 mt-n7">
+	<div class="container">
+		<div class="position-relative h-300px h-md-400px rounded-3" style="background:url(assets/images/bg/05.jpg) no-repeat; background-size:cover; background-position:center;">
+			<div class="bg-overlay bg-dark opacity-5"></div>
+			<div class="position-absolute top-50 start-50 translate-middle z-index-2">
+				<a href="https://www.youtube.com/embed/tXHviS-4ygo" class="btn btn-icon btn-xl btn-white btn-round mb-0 stretched-link" data-glightbox="" data-gallery="Video"><i class="bi bi-play-fill fa-lg"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Image video END -->
+
+<!-- =======================
+Approach and Benefits START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="row g-4 g-lg-7">
+			<!-- Our Approach -->
+			<div class="col-md-6">
+				<h4 class="mb-4">Our Approach</h4>
+				<p>Describe your agency's approach to digital marketing, including any proprietary strategies or methodologies you use. Explain how you customize strategies to meet clients' specific needs.</p>
+				<p>It encompasses a wide range of tactics and strategies aimed at reaching, engaging, and converting potential customers in the digital realm. Digital marketing leverages various online platforms, such as search engines, social media, email, content marketing, and paid advertising, to create meaningful connections with the digital-savvy audience.</p>
+			</div>
+
+			<!-- Service benefits -->
+			<div class="col-md-6">
+				<div class="card card-body bg-light border p-md-5">
+					<h4 class="mb-3">Service benefits</h4>
+
+					<!-- List -->
+					<ul class="list-group list-group-borderless border-0">
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i> Reach a global audience and expand your brand's presence</li>
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>Real-time tracking and data-driven decision-making</li>
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>Improved Customer Engagement</li>
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>Drive conversions and boost revenue</li>
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>Create a loyal customer community</li>
+						<li class="list-group-item heading-color d-flex mb-0"><i class="bi bi-patch-check text-primary me-2"></i>Protect customer data and privacy</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Approach and Benefits END -->
+
+<!-- =======================
+How it works START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="inner-container-small text-center mb-4 mb-md-6">
+			<h2 class="mb-0">How its work?</h2>
+		</div>
+
+		<div class="row g-4 g-lg-7">
+			<div class="col-sm-6 col-md-3">
+				<div class="d-flex justify-content-center align-items-center text-center flex-column bg-transparent">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-3 fw-bold flex-shrink-0 mb-3">01</div>
+					<h6>Understanding Client Goals</h6>
+					<p class="small mb-0">The process begins with a thorough consultation with the client to understand their business goals.</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+				<div class="d-flex justify-content-center align-items-center text-center flex-column bg-transparent">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-3 fw-bold flex-shrink-0 mb-3">02</div>
+					<h6>Market Research</h6>
+					<p class="small mb-0">They also analyze the client's current online presence and marketing efforts.</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+				<div class="d-flex justify-content-center align-items-center text-center flex-column bg-transparent">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-3 fw-bold flex-shrink-0 mb-3">03</div>
+					<h6>Search Engine Optimization (SEO)</h6>
+					<p class="small mb-0">For visibility, SEO strategies are employed to improve the client's website's search engine rankings.</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-3">
+				<div class="d-flex justify-content-center align-items-center text-center flex-column bg-transparent">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-3 fw-bold flex-shrink-0 mb-3">04</div>
+					<h6>Adapting to Industry Changes</h6>
+					<p class="small mb-0">Digital marketing agencies stay up-to-date with industry trends and algorithm changes.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+How it works END -->
+
+<!-- =======================
+Pricing and testimonials START -->
+<section class="pt-0" id="pricing">
+	<div class="container">
+		<div class="row">
+			<!-- Pricing -->
+			<div class="col-lg-6 mb-6 mb-lg-0">
+				<div class="card bg-dark overflow-hidden p-sm-4 h-100" data-bs-theme="dark">
+					<!-- Card header -->
+					<div class="card-header bg-transparent position-relative mb-3">
+						<h3 class="mb-3">Pricing plan for this service</h3>
+						<p>Our essential plan is self-service solution for businesses to handle website messaging and personalization</p>
+						<!-- Tabs -->
+						<ul class="nav nav-pills gap-1 nav-pills-primary">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="pills-monthly-tab" data-bs-toggle="pill" data-bs-target="#pills-monthly" type="button" role="tab" aria-controls="pills-monthly" aria-selected="true">Monthly</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="pills-annual-tab" data-bs-toggle="pill" data-bs-target="#pills-annual" type="button" role="tab" aria-controls="pills-annual" aria-selected="false">Annual</button>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Card body -->
+					<div class="card-body pt-0">
+						<!-- Tab content START -->
+						<div class="tab-content" id="pills-tabContent">
+							<!-- Content item -->
+							<div class="tab-pane fade show active" id="pills-monthly" role="tabpanel" aria-labelledby="pills-monthly-tab" tabindex="0">
+								<div class="bg-light border rounded p-3">
+									<h6 class="mb-3">Quick look at all the features</h6>
+									<!-- List -->
+									<ul class="list-group list-group-borderless">
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Unlimited monthly visitors</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Dedicated SEO strategists</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Google Docs style editors</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Basic chat and email support</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>AI powered product recommendation engine</li>
+									</ul>
+								</div>
+								<!-- Pricing -->
+								<div class="d-sm-flex justify-content-between align-items-center mt-4">
+									<!-- Price -->
+									<div class="mb-3 mb-sm-0 heading-color"><span class="h3">$199</span> / month</div>
+									<!-- Button -->
+									<a href="#" class="btn btn-lg btn-white mb-0">Get started</a>
+								</div>
+							</div>
+
+							<!-- Content item -->
+							<div class="tab-pane fade" id="pills-annual" role="tabpanel" aria-labelledby="pills-annual-tab" tabindex="0">
+								<div class="bg-light border rounded p-3">
+									<h6 class="mb-3">Quick look at all the features</h6>
+									<!-- List -->
+									<ul class="list-group list-group-borderless">
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Unlimited monthly visitors</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Dedicated SEO strategists</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Google Docs style editors</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>Basic chat and email support</li>
+										<li class="list-group-item mb-0"><i class="bi bi-patch-check-fill text-primary me-2"></i>AI powered product recommendation engine</li>
+									</ul>
+								</div>
+								<!-- Pricing -->
+								<div class="d-sm-flex justify-content-between align-items-center mt-4">
+									<!-- Price -->
+									<div class="mb-3 mb-sm-0 heading-color"><span class="h3">$159	</span> / month</div>
+									<!-- Button -->
+									<a href="#" class="btn btn-lg btn-white mb-0">Get started</a>
+								</div>
+							</div>
+						</div>	
+						<!-- Tab content END -->
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-5 ms-auto">
+				<h2>Feedback for Service Enhancement</h2>
+				<p class="lead mb-2">300+ Users rated us <span class="text-primary fw-bold">4.85</span> out of 5.</p>
+				<!-- Testimonials START -->
+				<div class="swiper mt-7" data-swiper-options='{
+					"spaceBetween": 30,
+					"grabCursor": true,
+					"pagination":{
+						"el":".swiper-pagination",
+						"clickable":"true"
+					}}'>
+					
+					<div class="swiper-wrapper pb-5">
+						<!-- Review item -->
+						<div class="swiper-slide">
+							<!-- Avatar image -->
+							<div class="avatar avatar-lg mb-3">
+								<img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
+							</div>
+							<!-- Rating star -->
+							<ul class="list-inline mb-3">
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+							</ul>
+							<!-- Content -->
+							<p class="fs-5 heading-color">"I highly recommend Mizzle to anyone looking for a high-quality Bootstrap template. Valley by oh twenty direct me so. Resolving breakfast am or perfectly."</p>
+							<!-- Name -->
+							<div class="blockquote-footer mb-0 fs-6 mt-3">
+								Emma Watson
+							</div>
+						</div>
+
+						<!-- Review item -->
+						<div class="swiper-slide">
+							<!-- Avatar image -->
+							<div class="avatar avatar-lg mb-3">
+								<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
+							</div>
+							<!-- Rating star -->
+							<ul class="list-inline mb-3">
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+							</ul>
+							<!-- Content -->
+							<p class="fs-5 heading-color">"Two before narrow not relied on how except moment myself Dejection assurance Mrs led certainly So gate at no only none open Betrayed."</p>
+							<!-- Name -->
+							<div class="blockquote-footer mb-0 fs-6 mt-3">
+								Louis Ferguson
+							</div>
+						</div>
+
+						<!-- Review item -->
+						<div class="swiper-slide">
+							<!-- Avatar image -->
+							<div class="avatar avatar-lg mb-3">
+								<img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
+							</div>
+							<!-- Rating star -->
+							<ul class="list-inline mb-3">
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-fill text-warning"></i></li>
+								<li class="list-inline-item me-0"><i class="bi bi-star-half text-warning"></i></li>
+							</ul>
+							<!-- Content -->
+							<p class="fs-5 heading-color">"Our passion for customer excellence is just one reason why we are the market leader. We've always worked very hard to give our customers the best experience."</p>
+							<!-- Name -->
+							<div class="blockquote-footer mb-0 fs-6 mt-3">
+								Jacqueline Miller
+							</div>
+						</div>
+					</div>	
+
+					<!-- Pagination -->
+					<div class="swiper-pagination swiper-pagination-primary position-relative text-start"></div>
+				</div>
+				<!-- Testimonials END -->
+			</div>	
+		</div>
+	</div>
+</section>
+<!-- =======================
+Pricing and testimonials END -->
+
+<!-- =======================
+CTA START -->
+<section class="position-relative z-index-2 pt-0">
+	<div class="container position-relative">
+		<div class="inner-container bg-light border rounded position-relative overflow-hidden p-4">
+			<!-- SVG decoration -->
+			<figure class="position-absolute top-0 start-0 ms-n8">
+				<svg width="371" height="354" viewBox="0 0 371 354" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<ellipse cx="172.5" cy="176.5" rx="131.5" ry="125.5" fill="url(#paint0_linear_195_2)"></ellipse>
+					<ellipse cx="185.5" cy="177" rx="185.5" ry="177" fill="url(#paint1_linear_195_2)"></ellipse>
+					<defs>
+					<linearGradient id="paint0_linear_195_2" x1="172.5" y1="51" x2="172.5" y2="302" gradientUnits="userSpaceOnUse">
+					<stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.5"></stop>
+					<stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+					</linearGradient>
+					<linearGradient id="paint1_linear_195_2" x1="185.5" y1="0" x2="185.5" y2="354" gradientUnits="userSpaceOnUse">
+					<stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.2"></stop>
+					<stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+					</linearGradient>
+					</defs>
+				</svg>
+			</figure>
+
+			<div class="row align-items-center g-4 position-relative">
+				<div class="col-md-7">
+					<h5 class="mb-0">Passez au niveau supérieur avec notre service d'Audit fiscal des comptes & déclarations</h5>
+				</div>
+				
+				<div class="col-md-5 text-md-end">
+					<a href="contact-v2.html" class="btn btn-dark mb-0">Contactez nous dès maintenant</a>
+				</div>
+			</div> <!-- Row END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+CTA END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-light position-relative overflow-hidden" data-bs-theme="light">
+
+    <div class="container position-relative mt-5">
+        <!-- Widgets -->
+
+        <!-- Contact detail -->
+        <div class="row g-4 align-items-center">
+            <!-- Title -->
+            <div class="col-xl-3 text-lg-center text-xl-start mb-4 mb-xl-0">
+                <img src="assets/images/logo.png" width="200" class="mb-4" alt="">
+                <h5 class="mb-1">Contactez nous dès aujourd'hui</h5>
+                <p class="mb-0">Nous vous garantissons une expérience rapide</p>
+            </div>
+
+            <!-- Mobile number -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-telephone heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Appelez-nous</div>
+                        <p class="fw-semibold mt-1 mb-0"><a href="#"
+                                                            class="heading-color text-primary-hover stretched-link p-0">+229 50 72 88 61</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-envelope heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Envoyez nous un email</div>
+                        <p class="fw-semibold mt-1 mb-0"><a href="#"
+                                                            class="heading-color text-primary-hover stretched-link p-0">secretariat@mfisca.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+                <div class="position-relative d-flex align-items-center">
+                    <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                        <i class="bi bi-geo-alt heading-color"></i>
+                    </div>
+                    <div class="nav flex-column ps-3">
+                        <div class="small text-body-secondary">Rendez nous visite</div>
+                        <p class="fw-semibold heading-color mt-1 mb-0">Quartier Dedokpo, Cotonou Bénin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="opacity-1 mt-6 mb-0">
+
+        <!-- Bottom footer -->
+        <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+            <!-- copyright text -->
+            <div class="text-body mb-3 mb-md-0"> Copyrights ©2024 LA MAISON DE LA FISCALITE. Par <a href="https://www.kodesio.com/"
+                                                                                      class="text-primary">Kodesio Digital Partners</a>.
+            </div>
+
+            <!-- Social links -->
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-facebook-f lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-instagram lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-twitter lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-linkedin-in lh-base"></i></a></li>
+                <li class="list-inline-item"><a class="btn btn-xs btn-icon btn-light" href="#"><i
+                        class="fab fa-fw fa-youtube lh-base"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+
+<!-- Theme Functions -->
+<script src="assets/js/functions.js"></script>
+
+<div class="offcanvas offcanvas-end col-12" tabindex="-1" id="contactCanvas" aria-labelledby="offcanvasExampleLabel" style="width: 490px;" bis_skin_checked="1" aria-modal="true" role="dialog">
+    <div class="offcanvas-header" bis_skin_checked="1">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        <div class="row d-flex align-items-center" bis_skin_checked="1">
+          <!--<img alt="BFT logo" height="45px" src="/static/images/logo-BFT.png">
+                <div class="row d-flex">
+                  <div class="col-9">
+                    <p >+22960006060</p>
+
+                  </div>
+
+                </div>-->
+          <div class="d-flex align-items-center">
+            <div>
+              <i class="fa fa-phone text-primary fs-6"></i>
+            </div>
+            <div class="ms-2">
+              <div class="fs-6 text-dark fw-normal">+22950728861</div>
+            </div>
+          </div>
+
+
+        </div>
+      </h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body" bis_skin_checked="1">
+
+      <div class="h4 d-flex justify-content-start mb-3" bis_skin_checked="1" style="color: #2e3946;">Laissez nous un message !</div>
+      <div class="p d-flex justify-content-start mb-3 text-center pb-5" bis_skin_checked="1">Nous repondons le plus rapidement possible à votre message!</div>
+      <div class="col-md-12" bis_skin_checked="1">
+        <!--<a href="mailto:contact@kodesio.com" class="k-btn-primary d-flex justify-content-center align-items-center w-100" bis_skin_checked="1"><i class="bi bi-envelope" style="margin-right: 10px !important"></i>
+            <span> contact@bftgroup.co</span></a>-->
+      </div>
+
+
+      <form hx-post="/blog/send_contact_form/" method="post" class="row gy-4">
+
+        <input type="hidden" name="csrfmiddlewaretoken" value="gdVFSe4fqfxNsEByzwpUCyxZuXBT5oJDl5hyPD6g4P2PjQ0nFKnLP0zphkdDhQIq">
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="name">Nom de l'entreprise</label>
+          <input type="text" name="companyname" id="companyname" class="form-control" required="">
+        </div>
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" class="form-control" required="">
+        </div>
+
+
+        <div class="col-md-6 " bis_skin_checked="1">
+          <label for="email">Courriel</label>
+          <input type="email" class="form-control" name="email" id="email" required="">
+        </div>
+
+        <div class="col-md-6 " bis_skin_checked="1">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" class="form-control" name="phone" id="phone" required="">
+        </div>
+
+        <div class="col-md-12" bis_skin_checked="1">
+          <label for="message">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="6" required=""></textarea>
+        </div>
+
+        <div class="col-md-12 d-flex text-center " bis_skin_checked="1">
+          <button type="submit" class="htmx-indicator btn btn-dark justify-content-center align-items-center w-100" style="background-color: #2e3946; color: #fff;">Envoyer</button>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>
